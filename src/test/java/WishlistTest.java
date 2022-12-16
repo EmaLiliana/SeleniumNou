@@ -1,8 +1,10 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WishlistTest {
@@ -19,12 +21,18 @@ public class WishlistTest {
 
     @Test
     public void addToWishlistTest(){
-
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
-        driver.findElement(By.id("email")).sendKeys("cosmin@fasttrackit.org");
-        driver.findElement(By.id("pass")).sendKeys("123456");
+        driver.findElement(By.cssSelector("div.account-cart-wrapper span.label")).click();
+        driver.findElement(By.cssSelector("div.links li:nth-child(6) a")).click();
+        driver.findElement(By.id("email")).sendKeys("ana@yahoo.com");
+        driver.findElement(By.id("pass")).sendKeys("AnaAna1");
         driver.findElement(By.id("send2")).click();
+        driver.findElement(By.cssSelector("#nav li.nav-5 a")).click();
+        driver.findElement(By.cssSelector(".actions a")).click();
+        driver.findElement(By.cssSelector("ul.add-to-links a")).click();
+
+        WebElement addedToWishlistMsg = driver.findElement(By.cssSelector(".success-msg li"));
+        Assert.assertTrue(addedToWishlistMsg.isDisplayed());
+
 
 
     }
