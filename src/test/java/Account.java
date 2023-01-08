@@ -18,21 +18,23 @@ public class Account {
         driver.get("http://testfasttrackit.info/selenium-test/");
     }
     @Test
-    public void myAccount(){
+    public void myAccount() throws InterruptedException {
         driver.findElement(By.cssSelector(".account-cart-wrapper span.label")).click();
         driver.findElement(By.cssSelector("div.links li.first a")).click();
         driver.findElement(By.cssSelector(".buttons-set span span")).click();
-        driver.findElement(By.cssSelector(".input-box #firstname")).sendKeys("leamara");
-        driver.findElement(By.cssSelector(".input-box #lastname")).sendKeys("Ana");
-        driver.findElement(By.cssSelector(".input-box #email_address")).sendKeys("leamara1234@yahoo.com");
+        driver.findElement(By.cssSelector(".input-box #firstname")).sendKeys("Evla");
+
+        driver.findElement(By.cssSelector(".input-box #lastname")).sendKeys("Ona");
+        driver.findElement(By.cssSelector(".input-box #email_address")).sendKeys("hrcaa@yahoo.com");
         driver.findElement(By.cssSelector(".input-box #password")).sendKeys("Ana1234");
         driver.findElement(By.cssSelector(".input-box #confirmation")).sendKeys("Ana1234");
-        driver.findElement(By.cssSelector(".control label")).click();
+        driver.findElement(By.cssSelector("li.control input")).click();
         driver.findElement(By.cssSelector(".buttons-set span span")).click();
-        driver.findElement(By.cssSelector("li.current strong")).click();
+        Thread.sleep(15000);
 
-        WebElement changePasswordAccount = driver.findElement(By.cssSelector(".box-content a"));
-        Assert.assertTrue(changePasswordAccount.isDisplayed());
+
+        WebElement myOrders =driver.findElement(By.cssSelector(".block.block-account ul li:nth-child(4) a"));
+        Assert.assertTrue(myOrders.isDisplayed());
 
 
     }

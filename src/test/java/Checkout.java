@@ -1,8 +1,10 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.openqa.selenium.By.cssSelector;
@@ -38,13 +40,20 @@ public class Checkout {
         driver.findElement(By.cssSelector("#billing\\:telephone")).sendKeys("0008845969");
         driver.findElement(By.cssSelector("#billing\\:use_for_shipping_yes")).click();
         driver.findElement(By.cssSelector("#billing-buttons-container span span")).click();
-
+        Thread.sleep(15000);
         driver.findElement(By.cssSelector("#shipping-method-buttons-container > button > span > span")).click();
 
-        Thread.sleep(100);
+
+        Thread.sleep(5000);
+
+
         driver.findElement(By.cssSelector("#payment-buttons-container > button > span > span")).click();
-        Thread.sleep(100);
+        Thread.sleep(10000);
+
         driver.findElement(By.cssSelector("#checkout-review-submit span span")).click();
+
+        WebElement grandTotal= driver.findElement(cssSelector(".last .a-right .price"));
+        Assert.assertTrue(grandTotal.isDisplayed());
 
 
     }

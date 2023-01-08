@@ -1,3 +1,5 @@
+import Pages.HomePage;
+import Pages.LoginPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,11 +23,17 @@ public class WishlistTest {
 
     @Test
     public void addToWishlistTest(){
-        driver.findElement(By.cssSelector("div.account-cart-wrapper span.label")).click();
-        driver.findElement(By.cssSelector("div.links li:nth-child(6) a")).click();
-        driver.findElement(By.id("email")).sendKeys("ana@yahoo.com");
-        driver.findElement(By.id("pass")).sendKeys("AnaAna1");
-        driver.findElement(By.id("send2")).click();
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage=new LoginPage(driver);
+
+
+        homePage.clickAccountButton();
+        homePage.clickLoginLink();
+        loginPage.setEmailField("ana@yahoo.com");
+        loginPage.setPasswordField("AnaAna1");
+        loginPage.clickLoginButton();
+
+
         driver.findElement(By.cssSelector("#nav li.nav-5 a")).click();
         driver.findElement(By.cssSelector(".actions a")).click();
         driver.findElement(By.cssSelector("ul.add-to-links a")).click();
